@@ -10,6 +10,6 @@
 		![](https://github.com/YewiiYan/UnityShader/blob/master/images/SampleScene_3.png?raw=true)
 	- Properties属性语句块的使用（PropertiesDemoShader）</br>
 		![](https://github.com/YewiiYan/UnityShader/blob/master/images/SampleScene_4.png?raw=true)
-- PhongLightScene：标准光照模型</br>
+- PhongLightScene：标准光照模型(PhongLightShader)</br>
 	![](https://github.com/YewiiYan/UnityShader/blob/master/images/PhongLightScene_1.png?raw=true)
 - TextureScene：
