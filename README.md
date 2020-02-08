@@ -12,4 +12,5 @@
 		![](https://github.com/YewiiYan/UnityShader/blob/master/images/SampleScene_4.png?raw=true)
 - PhongLightScene：标准光照模型(PhongLightShader)</br>
 	![](https://github.com/YewiiYan/UnityShader/blob/master/images/PhongLightScene_1.png?raw=true)
-- TextureScene：
+- TextureScene：纹理+法线+高光遮罩(TextureShader)</br>
+	![](https://github.com/YewiiYan/UnityShader/blob/master/images/TextureScene_1.png?raw=true)
