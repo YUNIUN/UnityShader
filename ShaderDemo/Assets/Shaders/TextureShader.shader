@@ -78,7 +78,7 @@
 
             //struct v2f {
             //    float4 position : SV_POSITION;
-            //    float4 uv : TEXCOORD0;
+            //    float2 uv : TEXCOORD0;
             //    float3 worldPosition : TEXCOORD1;
             //    float3x3 worldRotation : TEXCOORD2;
             //};
@@ -86,8 +86,7 @@
             //v2f vert (a2v v) {
             //    v2f o;
             //    o.position = UnityObjectToClipPos(v.position);
-            //    o.uv.xy = TRANSFORM_TEX(v.texcoord, _MainTex);
-            //    o.uv.zw = TRANSFORM_TEX(v.texcoord, _NormalMap);
+            //    o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
             //    o.worldPosition = mul(unity_ObjectToWorld, v.position).xyz;
 
             //    float3 worldNormal = normalize(UnityObjectToWorldNormal(v.normal));
@@ -100,11 +99,11 @@
             //    return o;
             //}
             //fixed4 frag (v2f i) : SV_TARGET0 {
-            //    fixed4 packedNormal = tex2D(_NormalMap, i.uv.zw);
+            //    fixed4 packedNormal = tex2D(_NormalMap, i.uv);
             //    fixed3 tangentNormal = UnpackNormal(packedNormal);
             //    tangentNormal = mul(i.worldRotation, tangentNormal);
 
-            //    fixed3 albedo = tex2D(_MainTex, i.uv.xy).rgb;
+            //    fixed3 albedo = tex2D(_MainTex, i.uv).rgb;
             //    fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
             //    fixed3 worldLightDir = normalize(UnityWorldSpaceLightDir(i.worldPosition.xyz));
             //    fixed3 diffuse = _LightColor0.rgb * albedo * saturate(dot(tangentNormal, worldLightDir));
@@ -112,7 +111,8 @@
             //    fixed3 viewDir = normalize(UnityWorldSpaceViewDir(i.worldPosition.xyz));
             //    fixed3 halfDir = normalize(worldLightDir + viewDir);
             //    fixed facing = ceil(saturate(dot(tangentNormal, worldLightDir)));
-            //    fixed3 specular = facing * _LightColor0.rgb * _Ks.rgb * pow(max(dot(tangentNormal, halfDir), 0), _Shininess);
+            //    fixed specularMask = tex2D(_SpecularMask, i.uv).r * _SpecularScale;
+            //    fixed3 specular = facing * _LightColor0.rgb * specularMask * _Ks.rgb * pow(max(dot(tangentNormal, halfDir), 0), _Shininess);
 
             //    return fixed4(_Emissive + ambient + diffuse + specular, 1.0);
             //}
